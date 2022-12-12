@@ -1,0 +1,41 @@
+1. First bug( when debugging palette):
+When i solve the minor compile bug, i find the program stuck, then using the gdb 
+i find that before calculating the average color by dividing the counter, i didn't 
+check whether it is zero.
+
+2. Second bug( when debugging palette):
+After that, i find that the color of the picture is a little bit green. i check the 
+piazza and find that the red and blue should multipy by 2 to make them same amount as green.
+
+3. third bug (when debugging palette):
+After that, the left and the right side of the status bar is blinking and starts to 
+show some weird characters, i solve this bug for about 8 hours! At last in my checkpoint 1 
+file, i declares the buffer using unsigned char* buffer[number] and did not initialize 
+them to be zero, and after i use the malloc and put 0 in it, the bug is fixed. (tough bug of the year)
+
+ADDED comment, i find the nature bug is not the malloc issue, instead, the malloc is concealing the bug
+The ture bug is, i wrongly declare the string to be 40, which should be 41 since the last char of "\0" counts as well
+
+4. fourth bug (when debugging TUX):
+When i finished ioctl and debug it with my input.c , i find that the button_status that records the button is wrong, 
+and i find this is due to its property of active low
+
+5. fifth bug ( when debugging TUX):
+When i try to consider the filp logic, i firstly assume it is just simply flip in the end, which will give the wrong number. 
+Then i carefully calculated from the beggining, it fixed
+
+6. sixth bug (when debuggin TUX):
+When debugging reset, the button is always be blank and not return to its origin value, then i find i init the TUX first, and then print the led 
+value, however, the init set it to be zero. Therefore i exchange the order of them and fix it.
+
+7. seventh bug (when debuging TUX):
+LED has the same bug as BIOC flip logic, i wrongly shift the bits
+
+8. eighth bug ( when debugging TUX):
+I find that althought the button status that i store in my code is returning the correct value of button, the arg returned shows
+the totally different value, then i find that when i am assign values to the pointer, i didn;t use the copy_to_user, which in return 
+gives the wrong answer
+
+9. ninth bug (when debugging TUX):
+Finally i link the TUX into the gameloop, but the game stuck and starts to blinking, then i found the printk i used for debugging 
+purpose should be commented otherwise it will cause error.
